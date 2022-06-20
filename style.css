@@ -14,7 +14,7 @@ body {
 .table {
   border: 1px solid #f6e58d;
   width: 400px;
-  height: 600px;
+  height: 400px;
   text-align: center;
   padding: 2px;
 }
@@ -23,6 +23,7 @@ body {
   color: #576574;
   font-size: 20px;
   font-weight: bold;
+  cursor: pointer;
 }
 .information {
   border: 1px solid #f9ca24;
