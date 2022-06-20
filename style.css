@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+.table {
+  border: 1px solid #f6e58d;
+  width: 400px;
+  height: 100vh;
+  text-align: center;
+  padding: 2px;
+}
+.header {
+  background-color: #feca57;
+  color: #576574;
+  font-size: 20px;
+  font-weight: bold;
+}
+.information {
+  border: 1px solid #f9ca24;
+  color: #576574;
+  font-size: 16px;
+}

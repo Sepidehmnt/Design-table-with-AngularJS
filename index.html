@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <table class="table">
+        <tr>
+          <td class="header">Name</td>
+          <td class="header">City</td>
+        </tr>
+        <tr ng-repeat="x in names">
+          <td class="information" ng-if="$odd" style="background-color: #f8efba">
+            {{x.name}}
+          </td>
+          <td class="information" ng-if="$even" style="background-color: #f7d794">
+            {{x.name}}
+          </td>
+          <td class="information" ng-if="$odd" style="background-color: #f8efba">
+            {{x.city}}
+          </td>
+          <td class="information" ng-if="$even" style="background-color: #f7d794">
+            {{x.city}}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
