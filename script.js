@@ -1,4 +1,4 @@
-var app = angular.module("myApp", []);
+let app = angular.module("myApp", []);
 app.controller("myCtrl", function ($scope) {
   $scope.names = [
     { name: "Sepideh", city: "Mashhad" },
