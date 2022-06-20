@@ -6,10 +6,13 @@ app.controller("myCtrl", function ($scope) {
     { name: "Sara", city: "Mashhad" },
     { name: "Faranak", city: "Tehran" },
     { name: "Maryam", city: "Shiraz" },
-    { name: "Ameneh", city: "Abadan" },
+    { name: "Ameneh", city: "Jovein" },
     { name: "Zahra", city: "Birjand" },
     { name: "Saeed", city: "Rasht" },
     { name: "Amir", city: "Ghazvin" },
     { name: "Yalda", city: "Hamedan" },
   ];
+  $scope.orderByMe = function (x) {
+    $scope.myOrderBy = x;
+  };
 });
