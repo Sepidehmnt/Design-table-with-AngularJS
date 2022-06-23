@@ -10,30 +10,40 @@
   </head>
   <body>
     <div ng-app="myApp" ng-controller="myCtrl">
-      <div class="search">
-        <p>Type at least a letter in the input field:</p>
-        <div><input class="searchBox" type="text" ng-model="test" /></div>
+      <div class="search-section">
+        <h3>Type at least a letter in the input field:</h3>
+        <form class="search-bar">
+          <input
+            id="search-box"
+            placeholder="Search..."
+            type="text"
+            ng-model="test"
+          />
+          <div id="search-icon">
+            <img src="./images/search-icon.jpg" alt="" />
+          </div>
+        </form>
       </div>
 
       <table class="table">
-        <tr>
-          <th class="header" ng-click="orderByMe('name')">Name</th>
-          <th class="header" ng-click="orderByMe('city')">City</th>
-        </tr>
-        <tr ng-repeat="x in names | orderBy:myOrderBy | filter:test">
-          <td class="information" ng-if="$odd" style="background-color: #f7d794">
-            {{x.name}}
-          </td>
-          <td class="information" ng-if="$even" style="background-color: #f8efba">
-            {{x.name}}
-          </td>
-          <td class="information" ng-if="$odd" style="background-color: #f7d794">
-            {{x.city}}
-          </td>
-          <td class="information" ng-if="$even" style="background-color: #f8efba">
-            {{x.city}}
-          </td>
-        </tr>
+        <thead>
+          <tr class="header">
+            <th id="id" ng-click="orderByMe('id')">ID</th>
+            <th id="name" ng-click="orderByMe('name')">NAME</th>
+            <th id="city" ng-click="orderByMe('city')">CITY</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            class="tableData"
+            ng-repeat="x in names|filter:test|orderBy:myOrderBy "
+          >
+            <td>{{x.id}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.city}}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <script src="./script.js"></script>

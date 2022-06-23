@@ -4,48 +4,74 @@
   box-sizing: border-box;
 }
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
   font-family: "Poppins", sans-serif;
-  height: 100vh;
-}
-.table {
-  border: 1px solid #f6e58d;
-  width: 400px;
-  height: 400px;
-  text-align: center;
-  padding: 2px;
-}
-.header {
-  background-color: #feca57;
-  color: #576574;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.information {
-  border: 1px solid #f9ca24;
-  color: #576574;
-  font-size: 16px;
 }
 
-.search {
+/* search section */
+.search-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 20px;
+  position: relative;
 }
-.search p {
-  font-size: 16px;
-  color: #130f40;
-  line-height: 35px;
+.search-section h3 {
+  color: #485460;
+  line-height: 30px;
 }
-.searchBox {
-  width: 200px;
-  padding: 4px;
-  border: 1px solid #ff9f43;
+/* search input */
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  border: 1px solid #ddd;
+  padding: 6px;
+  margin-top: 4px;
+  border-radius: 6px;
+}
+.search-bar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
   outline: none;
-  border-radius: 4px;
+  font-size: 16px;
+  color: #485460;
+}
+.search-bar #search-icon img {
+  width: 30px;
+  cursor: pointer;
+}
+
+/* table and details in it */
+.table {
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+.table th,
+.table td {
+  text-align: left;
+  padding: 12px;
+}
+
+.tableData td {
+  border-bottom: 1px solid #f1f1f1;
+}
+.tableData:hover {
+  background-color: #f1f1f1;
+}
+.header {
+  cursor: pointer;
+}
+.header #id {
+  width: 10%;
+  background-color: #58b19f;
+}
+.header #name {
+  width: 50%;
+  background-color: #55e6c1;
+}
+.header #city {
+  width: 40%;
+  background-color: #9aecdb;
 }
