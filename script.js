@@ -12,7 +12,11 @@ app.controller("myCtrl", function ($scope) {
     { id: 8, name: "Amir", city: "Ghazvin" },
     { id: 5, name: "Yalda", city: "Hamedan" },
   ];
+  $scope.reverse = false;
   $scope.orderByMe = function (x) {
+    if ($scope.myOrderBy == x) {
+      $scope.reverse = !$scope.reverse;
+    }
     $scope.myOrderBy = x;
   };
 });

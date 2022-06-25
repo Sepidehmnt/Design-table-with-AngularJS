@@ -5,6 +5,10 @@
 }
 body {
   font-family: "Poppins", sans-serif;
+  background-color: linear-gradient(141deg, #fff 0%, #f7f7f7 51%, #fff 75%);
+}
+.container {
+  margin: 40px;
 }
 
 /* search section */
@@ -13,7 +17,6 @@ body {
   flex-direction: column;
   justify-content: center;
   margin: 20px;
-  position: relative;
 }
 .search-section h3 {
   color: #485460;
@@ -67,6 +70,7 @@ body {
   width: 10%;
   background-color: #58b19f;
 }
+
 .header #name {
   width: 50%;
   background-color: #55e6c1;

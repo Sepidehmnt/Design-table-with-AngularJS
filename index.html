@@ -5,47 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./style.css" />
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   </head>
+
   <body>
-    <div ng-app="myApp" ng-controller="myCtrl">
-      <div class="search-section">
-        <h3>Type at least a letter in the input field:</h3>
-        <form class="search-bar">
-          <input
-            id="search-box"
-            placeholder="Search..."
-            type="text"
-            ng-model="test"
-          />
-          <div id="search-icon">
-            <img src="./images/search-icon.jpg" alt="" />
+    <div class="container">
+      <div ng-app="myApp" ng-controller="myCtrl">
+        <div class="container">
+          <div class="search-section">
+            <h3>Type at least a letter in the input field:</h3>
+            <form class="search-bar">
+              <input
+                id="search-box"
+                placeholder="Search..."
+                type="text"
+                ng-model="test"
+              />
+              <div id="search-icon">
+                <img src="./images/search-icon.jpg" alt="" />
+              </div>
+            </form>
           </div>
-        </form>
+    
+  
+        <table class="table">
+            <thead>
+              <tr class="header">
+                <th id="id" ng-click="orderByMe('id')">
+                  <span>ID</span>
+                  <i class="fa-solid fa-sort"></i>
+                </th>
+  
+                <th id="name" ng-click="orderByMe('name')">
+                 <span>NAME</span> <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
+                </th>
+  
+                <th id="city" ng-click="orderByMe('city')">
+                 <span>CITY</span> <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
+                </th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr
+                class="tableData"
+                ng-repeat="x in names|filter:test |orderBy:myOrderBy|orderBy:myOrderBy:reverse "
+              >
+             
+              <td>{{x.id}}</td>
+              <td>{{x.name}}</td>
+              <td>{{x.city}}</td>
+            </tr>
+            </tbody>
+          </table>
+      
       </div>
-
-      <table class="table">
-        <thead>
-          <tr class="header">
-            <th id="id" ng-click="orderByMe('id')">ID</th>
-            <th id="name" ng-click="orderByMe('name')">NAME</th>
-            <th id="city" ng-click="orderByMe('city')">CITY</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr
-            class="tableData"
-            ng-repeat="x in names|filter:test|orderBy:myOrderBy "
-          >
-            <td>{{x.id}}</td>
-            <td>{{x.name}}</td>
-            <td>{{x.city}}</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
+   
+
     <script src="./script.js"></script>
   </body>
 </html>
