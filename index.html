@@ -40,30 +40,30 @@
         <table class="table">
             <thead>
               <tr class="header">
-                <th id="id" ng-click="orderByMe('id')">
-                  <span>ID</span>
+                <th id="id" ng-click="sortBy('id')">
+                  <span ng-show="propertyName ==='id'" ng-class="{reverse:reverse}">ID</span>
                   <i class="fa-solid fa-sort"></i>
                 </th>
   
-                <th id="name" ng-click="orderByMe('name')">
-                 <span>NAME</span> <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
+                <th id="name" ng-click="customSort('firstName')">
+                 <span ng-show="propertyName ==='firstName'" ng-class="{reverse:reverse}">NAME</span> <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
                 </th>
   
-                <th id="city" ng-click="orderByMe('city')">
-                 <span>CITY</span> <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
-                </th>
+                 <th id="city" ng-click="customSort('city')">
+                 <span ng-show="propertyName ==='city'" ng-class="{reverse:reverse}">CITY</span> <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
+                </th> 
               </tr>
             </thead>
   
             <tbody>
               <tr
                 class="tableData"
-                ng-repeat="x in names|filter:test |orderBy:myOrderBy|orderBy:myOrderBy:reverse "
+                ng-repeat="friend in friends| filter:test|orderBy:propertyName:reverse:customSort|orderBy:propertyName:reverse"
               >
              
-              <td>{{x.id}}</td>
-              <td>{{x.name}}</td>
-              <td>{{x.city}}</td>
+              <td>{{friend.id}}</td>
+              <td>{{friend.firstName}}</td>
+              <td>{{friend.city}}</td>
             </tr>
             </tbody>
           </table>
