@@ -2,172 +2,109 @@ let app = angular.module("myApp", []);
 app.controller("myCtrl", [
   "$scope",
   function ($scope) {
-    let alphabets = [
-      "آ",
-      "ا",
-      "ب",
-      "پ",
-      "ت",
-      "ث",
-      "ج",
-      "چ",
-      "ح",
-      "خ",
-      "د",
-      "ذ",
-      "ر",
-      "ز",
-      "ژ",
-      "س",
-      "ش",
-      "ص",
-      "ض",
-      "ط",
-      "ظ",
-      "ع",
-      "غ",
-      "ف",
-      "ق",
-      "ک",
-      "گ",
-      "ل",
-      "م",
-      "ن",
-      "و",
-      "ه",
-      "ی",
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-    ];
-
-    let friends = [
-      { id: 15, firstName: "آناهیتا", city: "آمل" },
-      { id: 8, firstName: "بیتا", city: "جهرم" },
+    $scope.names = [
+      {
+        id: 15,
+        name: "آناهیتا",
+        city: "آمل",
+      },
+      {
+        id: 8,
+        name: "بیتا",
+        city: "جهرم",
+      },
       {
         id: 7,
-
-        firstName: "تبسم",
+        name: "تبسم",
         city: "طبس",
       },
       {
         id: 13,
-
-        firstName: "جهان",
+        name: "جهان",
         city: "شیراز",
       },
       {
         id: 1,
-
-        firstName: "چکامه",
+        name: "چکامه",
         city: "کرمان",
       },
       {
         id: 2,
-
-        firstName: "زینب",
+        name: "زینب",
         city: "یزد",
       },
       {
         id: 12,
-
-        firstName: "درسا",
+        name: "درسا",
         city: "قزوین",
       },
       {
         id: 4,
-
-        firstName: "پدرام",
+        name: "پدرام",
         city: "گنبد",
       },
       {
         id: 3,
-
-        firstName: "دانیال",
+        name: "دانیال",
         city: "چالیدره",
       },
       {
         id: 9,
-
-        firstName: "ژینا",
+        name: "ژینا",
         city: "شاهرود",
       },
       {
         id: 11,
-
-        firstName: "ژاله",
+        name: "ژاله",
         city: "رشت",
       },
       {
         id: 6,
-
-        firstName: "گندم",
+        name: "گندم",
         city: "بابل",
       },
       {
         id: 5,
-
-        firstName: "یلدا",
+        name: "یلدا",
         city: "تهران",
       },
       {
         id: 10,
-
-        firstName: "ویدا",
+        name: "ویدا",
         city: "گناباد",
       },
       {
         id: 14,
-
-        firstName: "فاطمه",
+        name: "فاطمه",
         city: "پرند",
       },
     ];
-    $scope.alphabets = alphabets;
-    $scope.friends = friends;
+    $scope.reverse = true;
+    $scope.column = "id";
 
-    $scope.customSort = function () {
-      let i = 0;
-      $scope.i = i;
-      return $scope.friends.sort(function (m1, m2) {
-        if (alphabets.indexOf(m1[i]) == alphabets.indexOf(m2[i])) i++;
+    $scope.persianSort = function (column) {
+      //First, check that the desired col is already clicked
+      //If that col is already clicked, again you have to do a reverse sort but it's the first time, u always have to sort normally,I mean ascending sort
+      $scope.reverse = column === $scope.column ? !$scope.reverse : false;
+      $scope.column = column;
 
-        if (alphabets.indexOf(m1[i]) < alphabets.indexOf(m2[i])) return -1;
-
-        if (alphabets.indexOf(m1[i]) > alphabets.indexOf(m2[i])) return 1;
-
-        return m1.firstName.localeCompare(m2.firstName);
+      return $scope.names.sort(function (m1, m2) {
+        if (column === "id") {
+          //for sorting id
+          if (m1.id > m2.id && $scope.reverse) return -1;
+          else if (m1.id > m2.id && !$scope.reverse) return 1;
+          else if (m1.id < m2.id && $scope.reverse) return 1;
+          else if (m1.id < m2.id && !$scope.reverse) return -1;
+        } else {
+          //for sorting name and city
+          return $scope.reverse
+            ? m2[column].localeCompare(m1[column])
+            : m1[column].localeCompare(m2[column]);
+        }
       });
     };
 
-    $scope.reverse = false;
-    $scope.sortBy = function (propertyName) {
-      $scope.reverse =
-        $scope.propertyName === propertyName ? !$scope.reverse : false;
-      $scope.propertyName = propertyName;
-    };
+    //when the page is loaded for the first time, its sort is based on the ID by default
+    $scope.persianSort("id");
   },
 ]);

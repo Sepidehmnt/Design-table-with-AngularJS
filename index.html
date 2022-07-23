@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Information Table</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -17,60 +17,51 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   </head>
 
-  <body>
+  <body ng-controller="myCtrl">
     <div class="container">
-      <div ng-app="myApp" ng-controller="myCtrl">
-        <div class="container">
-          <div class="search-section">
-            <h3>Type at least a letter in the input field:</h3>
-            <form class="search-bar">
-              <input
-                id="search-box"
-                placeholder="Search..."
-                type="text"
-                ng-model="test"
-              />
-              <div id="search-icon">
-                <img src="./images/search-icon.jpg" alt="" />
-              </div>
-            </form>
+      <div class="search-section">
+        <h3>Type at least a letter in the input field:</h3>
+        <form class="search-bar">
+          <input
+            id="search-box"
+            placeholder="Search..."
+            type="text"
+            ng-model="searchedItem"
+          />
+          <div id="search-icon">
+            <img src="./images/search-icon.jpg" alt="" />
           </div>
-    
-  
-        <table class="table">
-            <thead>
-              <tr class="header">
-                <th id="id" ng-click="sortBy('id')">
-                  <span ng-show="propertyName ==='id'" ng-class="{reverse:reverse}">ID</span>
-                  <i class="fa-solid fa-sort"></i>
-                </th>
-  
-                <th id="name" ng-click="customSort('firstName')">
-                 <span ng-show="propertyName ==='firstName'" ng-class="{reverse:reverse}">NAME</span> <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
-                </th>
-  
-                 <th id="city" ng-click="customSort('city')">
-                 <span ng-show="propertyName ==='city'" ng-class="{reverse:reverse}">CITY</span> <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
-                </th> 
-              </tr>
-            </thead>
-  
-            <tbody>
-              <tr
-                class="tableData"
-                ng-repeat="friend in friends| filter:test|orderBy:propertyName:reverse:customSort|orderBy:propertyName:reverse"
-              >
-             
-              <td>{{friend.id}}</td>
-              <td>{{friend.firstName}}</td>
-              <td>{{friend.city}}</td>
-            </tr>
-            </tbody>
-          </table>
-      
+        </form>
       </div>
+
+      <table class="table">
+        <thead>
+          <tr class="header">
+            <th id="id" ng-click="persianSort('id')">
+              <span>ID</span>
+              <span class="fa-solid fa-sort"></span>
+            </th>
+
+            <th id="name" ng-click="persianSort('name') ">
+              <span>NAME</span>
+              <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
+            </th>
+
+            <th id="city" ng-click="persianSort('city')">
+              <span>CITY</span>
+              <span class="iconify" data-icon="fluent:arrow-sort-16-filled"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tableData" ng-repeat="name in names| filter:searchedItem">
+            <td>{{name.id}}</td>
+            <td>{{name.name}}</td>
+            <td>{{name.city}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-   
 
     <script src="./script.js"></script>
   </body>
